@@ -5,12 +5,9 @@ build-backend = "hatchling.build"
 [project]
 name = "fastenv"
 version = "0.1.0"
-description = "Blazing-fast .env file manager for Python projects"
-readme = "README.md"
-license = {text = "MIT"}
+description = ".env file manager with diff, validate, sync"
 requires-python = ">=3.10"
-authors = [{name = "Ali Pourrahim"}]
-keywords = ["env", "dotenv", "environment", "cli", "devtools"]
+license = {text = "MIT"}
 dependencies = []
 
 [project.optional-dependencies]
@@ -19,14 +16,17 @@ dev = [
     "pytest-cov>=5.0",
     "ruff>=0.4",
     "mypy>=1.10",
-    "build>=1.0",
 ]
-
-[project.scripts]
-fastenv = "fastenv.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["fastenv"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501", "E402", "F401", "F841"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
